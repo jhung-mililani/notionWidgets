@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CountDown Timer</title>
+    <style>
+      body {
+        background-color: #ffffff;
+        color: rgb(55, 53, 47);
+        font-family: iawriter-mono, Nitti, Menlo, Courier, monospace;
+      }
+
+      body {
+        margin: 0;
+      }
+
+      #timer {
+        width: 100vw;
+        height: 100vh;
+        text-transform: uppercase;
+        font-size: 1em;
+        letter-spacing: 0.055em;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        text-align: center;
+        max-width: 500px;
+      }
+
+      .days,
+      .hours,
+      .minutes,
+      .seconds {
+        padding: 20px 10px;
+      }
+
+      #days {
+        color: rgb(55, 53, 47);
+      }
+
+      #hours {
+        color: rgb(55, 53, 47);
+      }
+
+      #minutes {
+        color: rgb(55, 53, 47);
+      }
+
+      #seconds {
+        color: rgb(55, 53, 47);
+      }
+
+      .numbers {
+        font-weight: 700;
+        font-size: 40px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body class="vsc-initialized">
+    <div id="timer">
+      <div class="days">
+        <div id="days" class="numbers">27</div> days
+      </div>
+      <div class="hours">
+        <div id="hours" class="numbers">23</div> hours
+      </div>
+      <div class="minutes">
+        <div id="minutes" class="numbers">59</div> minutes
+      </div>
+      <div class="seconds">
+        <div id="seconds" class="numbers">59</div> seconds
+      </div>
+    </div>
+    <script>
+      const year = new Date().getFullYear();
+      const myDate = new Date('2022-12-08T18:00:00.000Z');
+      const padLeft = (num) => {
+        if (String(num).length > 2) {
+          return num;
+        }
+        return String("00" + num).slice(-2);
+      }
+      setInterval(function() {
+        const today = new Date().getTime();
+        const diff = myDate - today;
+        const days = padLeft(Math.floor(diff / (1000 * 60 * 60 * 24)));
+        const hours = padLeft(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
+        const minutes = padLeft(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)));
+        const seconds = padLeft(Math.floor((diff % (1000 * 60)) / 1000));
+        if (true) {
+          document.getElementById("days").innerHTML = days;
+        }
+        if (true) {
+          document.getElementById("hours").innerHTML = hours;
+        }
+        if (true) {
+          document.getElementById("minutes").innerHTML = minutes
+        }
+        if (true) {
+          document.getElementById("seconds").innerHTML = seconds;
+        }
+      }, 1000);
+    </script>
+  </body>
+</html>
