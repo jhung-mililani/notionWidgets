@@ -1,1 +1,72 @@
-<!DOCTYPE html><html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Clock</title> <style>:root {--color: rgb(55, 53, 47);--background: rgba(0, 0, 0, 0);}body {background: var(--background);font-family: iawriter-mono, Nitti, Menlo, Courier, monospace;margin: 0;font-size: 16px;font-weight: 400;line-height: 1.5;text-transform: uppercase;width: 100vw;height: 100vh;display: flex;align-items: center;justify-content: flex-start;text-align: left;}body.center {justify-content: center;}body.right {justify-content: flex-end;text-align: right;}.clock {padding: 10px 1px;}h1 {margin: 0;font-weight: 700;}h5 {margin: 0;letter-spacing: 0.055em;font-weight: normal;font-size: 16px;}.title {color: var(--color);}.time {font-variant-numeric: tabular-nums;color: var(--color);}.date {color: var(--color);}@media (prefers-color-scheme: dark) {:root {--color: rgba(255, 255, 255, 0.81);--background: rgb(25, 25, 25);}}</style></head><body class="left vsc-initialized"><div class="clock"><h5 class="title">New York Time</h5><h1 class="time">12:00</h1><h5 class="date">Monday, January 01</h5></div><script>const days=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],months=["January","February","March","April","May","June","July","August","September","October","November","December"],padLeft=e=>String(e).length>2?e:String("00"+e).slice(-2);setInterval((function(){{const e=new Date,t=new Date(e.toLocaleString("en-US",{timeZone:"America/New_York"}));let n=t.getHours();const a=t.getMinutes();t.getSeconds();let r=n>=12?"pm":"am";r="",n=n||12;const o=days[t.getDay()],d=months[t.getMonth()],s=t.getDate();document.querySelector(".time").innerHTML=padLeft(n)+":"+padLeft(a)+" "+r,document.querySelector(".date").innerHTML=o+", "+d+" "+padLeft(s)}}),1e3);</script></body></html>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset = "utf-8">
+<title> Digital Clock </title>
+<style>
+  :root {
+        --color: rgb(55, 53, 47); 
+        --background: rgba(0, 0, 0, 0);
+      }
+
+      body {
+        background: var(--background); 
+        color: var(--color);
+        margin: 0;
+        font-size: 40px;
+        font-weight: 700;
+        font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; 
+        text-transform: uppercase;
+        display: flex;
+        justify-content: flex-start;
+        text-align: left;
+      } 
+
+      @media (prefers-color-scheme: dark) {
+        :root { 
+        --color: rgba(255, 255, 255, 0.81); 
+        --background: rgb(25, 25, 25); 
+        }
+      } 
+</style>
+</head>
+<body>
+<div id = "digital-clock"> </div>
+<script>
+  function Time() {
+  var date = new Date();
+  var hour = date.getHours();
+  var minute = date.getMinutes();
+  var second = date.getSeconds();
+  var period = "";
+  if (hour >= 12) {
+    period = "PM"
+  } else {
+    period = "AM"
+  }
+  if (hour == 0) {
+    hour = 12
+  } else {
+    if (hour > 12) {
+      hour = hour - 12
+    }
+  } 
+  hour = update(hour);
+  minute = update(minute);
+  second = update(second);
+  document.getElementById("digital-clock").innerText = `${hour}:${minute}:${second} ${period}`; 
+  innerText = 
+  setTimeout(Time, 1000)
+}
+
+function update(t) {
+  if (t < 10) {
+    return "0" + t
+  } else {
+    return t
+  }
+}
+Time();
+</script>
+</body>
+</html>
