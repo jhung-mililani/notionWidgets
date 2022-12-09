@@ -5,29 +5,39 @@
 <title> Digital Clock </title>
 <style>
   :root {
-        --color: rgb(55, 53, 47); 
-        --background: rgba(0, 0, 0, 0);
+    --background: rgba(0, 0, 0, 0);
+    --color: rgb(55, 53, 47); 
       }
 
-      body {
-        background: var(--background); 
-        color: var(--color);
-        margin: 0;
-        font-size: 40px;
-        font-weight: 700;
-        font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; 
-        text-transform: uppercase;
-        display: flex;
-        justify-content: flex-start;
-        text-align: left;
-      } 
+  @font-face { 
+    font-family: 'iawriter-mono'; 
+    font-style: normal; 
+    font-weight: 700; 
+    src: local("iA Writer Mono S Bold");
+  }
 
-      @media (prefers-color-scheme: dark) {
-        :root { 
-        --color: rgba(255, 255, 255, 0.81); 
-        --background: rgb(25, 25, 25); 
-        }
-      } 
+  body {
+    background: var(--background); 
+    color: var(--color);
+    margin: 0;
+    font-size: 40px;
+    font-weight: 700;
+    font-family: 'iawriter-mono', Nitti, Menlo, Courier, monospace; 
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    text-align: center; 
+    height: 100vh;
+    align-items: center;
+    max-width: 450px;
+  } 
+
+  @media (prefers-color-scheme: dark) {
+    :root { 
+    --background: rgb(25, 25, 25); 
+    --color: rgba(255, 255, 255, 0.81); 
+    }
+  } 
 </style>
 </head>
 <body>
