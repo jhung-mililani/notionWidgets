@@ -3,12 +3,15 @@
 <head>
 <meta charset = "utf-8">
 <title> Digital Clock </title>
-<style>
+<style> 
+  /* set global variables for background and text colors */
   :root {
-    --background: rgba(0, 0, 0, 0);
+    --background: rgba(255, 255, 255, 1);
     --color: rgb(55, 53, 47); 
       }
 
+  /* create new font face */
+  /* TODO: change source from locally hosted font to online hosted font */
   @font-face { 
     font-family: 'iawriter-mono'; 
     font-style: normal; 
@@ -16,6 +19,7 @@
     src: local("iA Writer Mono S Bold");
   }
 
+  /* setting text positioning and attributes */
   body {
     background: var(--background); 
     color: var(--color);
@@ -27,11 +31,13 @@
     display: flex;
     justify-content: space-between;
     text-align: center; 
+    /* should this be set to auto? box is too big in notion */
     height: 100vh;
     align-items: center;
     max-width: 450px;
   } 
 
+  /* if client preferences indicate dark mode, update background and text colors to match. */
   @media (prefers-color-scheme: dark) {
     :root { 
     --background: rgb(25, 25, 25); 
@@ -49,6 +55,7 @@
   var minute = date.getMinutes();
   var second = date.getSeconds();
   var period = "";
+  // detects client meridian and appends text accordingly 
   if (hour >= 12) {
     period = "PM"
   } else {
